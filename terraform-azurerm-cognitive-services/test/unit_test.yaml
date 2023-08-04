@@ -1,0 +1,19 @@
+pool:
+  vmImage: ubuntu-latest
+  
+trigger:
+  batch: "true"
+  branches:
+    include:    
+    - "*"
+
+variables:
+- group: tf-unit-test-variable-group
+resources:
+  repositories:
+  - repository: terratest-azurerm-template
+    type: git
+    name: GTS-InfrastructureAsCode-CenterOfExcellence\terratest-azurerm-template
+
+jobs:
+- template: terratest-pipeline.yml@terratest-azurerm-template
